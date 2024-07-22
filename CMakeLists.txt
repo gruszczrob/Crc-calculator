@@ -1,21 +1,11 @@
-﻿# CMakeList.txt : CMake project for Crc_Cal, include source and define
-# project specific logic here.
-#
-cmake_minimum_required (VERSION 3.8)
-
-# Enable Hot Reload for MSVC compilers if supported.
+﻿cmake_minimum_required (VERSION 3.16)
 if (POLICY CMP0141)
   cmake_policy(SET CMP0141 NEW)
   set(CMAKE_MSVC_DEBUG_INFORMATION_FORMAT "$<IF:$<AND:$<C_COMPILER_ID:MSVC>,$<CXX_COMPILER_ID:MSVC>>,$<$<CONFIG:Debug,RelWithDebInfo>:EditAndContinue>,$<$<CONFIG:Debug,RelWithDebInfo>:ProgramDatabase>>")
 endif()
+project (Crc_Cal)
+set(CMAKE_CXX_STANDARD 17)
+add_executable(Crc_Cal_App main.cpp Crc_Cal.cpp)
 
-project ("Crc_Cal")
-
-# Add source to this project's executable.
-add_executable (Crc_Cal "Crc_Cal.cpp" "Crc_Cal.h")
-
-if (CMAKE_VERSION VERSION_GREATER 3.12)
-  set_property(TARGET Crc_Cal PROPERTY CXX_STANDARD 20)
-endif()
-
-# TODO: Add tests and install targets if needed.
+add_subdirectory(pybind11)
+pybind11_add_module(Crc_Cal_Module module.cpp Crc_Cal.cpp)
