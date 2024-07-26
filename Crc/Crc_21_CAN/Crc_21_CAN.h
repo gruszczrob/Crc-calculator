@@ -12,7 +12,7 @@ constexpr bool REFIN_21_CAN = false;
 constexpr bool REFOUT_21_CAN = false;
 
 // Funkcje
-uint64_t computeCRC21(std::vector<uint8_t>& data);
+uint64_t computeCRC21(const std::string& input);
 uint64_t compute21Dec(const std::string& input);
 std::string compute21Hex(const std::string& input);
-#endif CRC_21_CAN_H
+#endif

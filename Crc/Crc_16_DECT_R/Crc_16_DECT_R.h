@@ -12,7 +12,7 @@ constexpr bool REFIN_16_DECT_R = false;
 constexpr bool REFOUT_16_DECT_R = false;
 
 // Funkcje
-uint64_t computeCRC16DectR(std::vector<uint8_t>& data);
+uint64_t computeCRC16DectR(const std::string& input);
 uint64_t computeCRC16DectRDec(const std::string& input);
 std::string computeCRC16DectRHex(const std::string& input);
-#endif CRC_16_DECT_R
+#endif

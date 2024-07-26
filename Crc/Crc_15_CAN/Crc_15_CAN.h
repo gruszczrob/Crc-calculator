@@ -12,7 +12,7 @@ constexpr bool REFIN_15_CAN = false;
 constexpr bool REFOUT_15_CAN = false;
 
 // Funkcje
-uint64_t computeCRC15(std::vector<uint8_t>& data);
+uint64_t computeCRC15(const std::string& input);
 uint64_t compute15Dec(const std::string& input);
 std::string compute15Hex(const std::string& input);
-#endif CRC_15_CAN_H
+#endif

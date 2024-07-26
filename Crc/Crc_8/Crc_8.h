@@ -12,7 +12,7 @@ constexpr bool REFIN_8 = false;
 constexpr bool REFOUT_8 = false;
 
 // Funkcje
-uint64_t computeCRC8(std::vector<uint8_t>& data);
+uint64_t computeCRC8(const std::string& input);
 uint64_t compute8Dec(const std::string& input);
 std::string compute8Hex(const std::string& input);
-#endif CRC_8_H
+#endif

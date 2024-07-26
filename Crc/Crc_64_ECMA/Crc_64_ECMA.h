@@ -12,7 +12,7 @@ constexpr bool REFIN_64_ECMA = false;
 constexpr bool REFOUT_64_ECMA = false;
 
 // Funkcje
-uint64_t computeCRC64ECMA(std::vector<uint8_t>& data);
+uint64_t computeCRC64ECMA(const std::string& input);
 uint64_t compute64ECMADec(const std::string& input);
 std::string compute64ECMAHex(const std::string& input);
-#endif CRC_64_ECMA_H
+#endif

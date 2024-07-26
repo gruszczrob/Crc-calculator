@@ -12,8 +12,8 @@ constexpr bool REFIN_17_CAN = false;
 constexpr bool REFOUT_17_CAN = false;
 
 // Funkcje
-uint64_t computeCRC17(std::vector<uint8_t>& data);
+uint64_t computeCRC17(const std::string& input);
 uint64_t compute17Dec(const std::string& input);
 std::string compute17Hex(const std::string& input);
 
-#endif CRC_17_CAN_H
+#endif

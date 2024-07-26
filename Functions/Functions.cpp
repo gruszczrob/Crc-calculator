@@ -10,7 +10,9 @@ uint64_t reverseBits(uint64_t num, int n) {
 }
 
 //LICZENIE CRC
-uint64_t computeCRC(std::vector<uint8_t>& data, const uint8_t length, const uint64_t initialValue, const uint64_t polynomial, const uint64_t finalXorValue, const bool refin, const bool refout) {
+uint64_t computeCRC(const std::string& input, const uint8_t length, const uint64_t initialValue, const uint64_t polynomial, const uint64_t finalXorValue, const bool refin, const bool refout) {
+    std::vector<uint8_t> data = bitStringToByteArray(input);
+
     uint64_t crc = initialValue;
     const uint64_t limiter = (length == 64) ? 0xFFFFFFFFFFFFFFFF : (1ULL << length) - 1;
     const uint64_t mostValuableBit = (length == 64) ? 0x8000000000000000 : 1ULL << (length - 1);

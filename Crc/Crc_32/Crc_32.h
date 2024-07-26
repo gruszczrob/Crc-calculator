@@ -12,7 +12,7 @@ constexpr bool REFIN_32 = true;
 constexpr bool REFOUT_32 = true;
 
 // Funkcje
-uint64_t computeCRC32(std::vector<uint8_t>& data);
+uint64_t computeCRC32(const std::string& input);
 uint64_t compute32Dec(const std::string& input);
 std::string compute32Hex(const std::string& input);
-#endif CRC_32_H
+#endif

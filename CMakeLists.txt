@@ -34,5 +34,3 @@ target_link_libraries(Crc_Cal_Module PRIVATE Crc_8)
 add_subdirectory(Crc/Crc_64_ECMA)
 target_link_libraries(Crc_Cal_App PRIVATE Crc_64_ECMA)
 target_link_libraries(Crc_Cal_Module PRIVATE Crc_64_ECMA)
-
-
