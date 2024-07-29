@@ -64,7 +64,7 @@ make
 5. Import Crc_Cal_Module in python file
 
 ## How to add new Crc 
-*Many crc models are presented on this [web page](https://reveng.sourceforge.io/crc-catalogue/all.html)*
+*Many crc models are presented on this [web page](https://reveng.sourceforge.io/crc-catalogue/all.htm)*
 
 **In places where anything is in those brackets ```/*[]*/``` fill it with custom info**
 1. In Crc directory add Folder named [Crc_Name]
