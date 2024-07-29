@@ -75,22 +75,20 @@ make
 3. Fill those files with templates:
   - [Crc_Name].cpp
 ```c++
-﻿#include "/*[Crc_Name]*/.h"
+#include "/*[Crc_Name]*/"
 
-
-uint64_t computeCRC/*[Crc_Name]*/(const std::string& input) {
-    return computeCRC(input, LENGTH, INITIAL_VALUE, POLYNOMIAL, FINAL_XOR_VALUE, REFIN, REFOUT);
-}
+using namespace /*[Crc_Name]*/;
 
 uint64_t compute/*[Crc_Name]*/Dec(const std::string& input) {
-    return computeCRC/*[Crc_Name]*/(input);
+    return computeCRC(input, LENGTH, INITIAL_VALUE, POLYNOMIAL, FINAL_XOR_VALUE, REFIN, REFOUT);
 }
 
 std::string compute/*[Crc_Name]*/Hex(const std::string& input) {
     std::stringstream stream;
-    stream << "CRC: 0x" << std::hex << std::uppercase << computeCRC/*[Crc_Name]*/(input);
+    stream << "CRC: 0x" << std::hex << std::uppercase << compute/*[Crc_Name]*/Dec(input);
     return stream.str();
-} 
+}
+
 ```
   - [Crc_Name].h
 ```c++
@@ -99,14 +97,16 @@ std::string compute/*[Crc_Name]*/Hex(const std::string& input) {
 
 #include <Functions.h>
 
-constexpr uint64_t POLYNOMIAL = /*[Crc_POLYNOMINAL]*/;
-constexpr uint64_t INITIAL_VALUE = /*[CRC_INITIAL_VALUE]*/;
-constexpr uint64_t FINAL_XOR_VALUE = /*[CRC_FINAL_XOR_VALUE]*/;
-constexpr uint8_t LENGTH = /*[CRC_LENGTH]*/;
-constexpr bool REFIN = /*[DOES_CRC_HAS_REFIN]*/;
-constexpr bool REFOUT = /*[DOES_CRC_HAS_REFOUT]*/;
+// Parameters
+namespace /*[Crc_Name]*/ {
+	constexpr uint64_t POLYNOMIAL = /*[Crc_POLYNOMINAL]*/;
+	constexpr uint64_t INITIAL_VALUE = /*[CRC_INITIAL_VALUE]*/;
+	constexpr uint64_t FINAL_XOR_VALUE = /*[CRC_FINAL_XOR_VALUE]*/;
+	constexpr uint8_t LENGTH = /*[CRC_LENGTH]*/;
+	constexpr bool REFIN = /*[DOES_CRC_HAS_REFIN]*/;
+	constexpr bool REFOUT = /*[DOES_CRC_HAS_REFOUT]*/;
+}
 
-uint64_t computeCRC/*[Crc_Name]*/(const std::string& input);
 uint64_t compute/*[Crc_Name]*/Dec(const std::string& input);
 std::string compute/*[Crc_Name]*/Hex(const std::string& input);
 #endif
