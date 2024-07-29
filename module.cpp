@@ -1,10 +1,10 @@
 #include <pybind11/pybind11.h>
+#include <Crc_8.h>
 #include <Crc_15_CAN.h>
+#include <Crc_16_DECT_R.h>
 #include <Crc_17_CAN.h>
 #include <Crc_21_CAN.h>
-#include <Crc_16_DECT_R.h>
 #include <Crc_32.h>
-#include <Crc_8.h>
 #include <Crc_64_ECMA.h>
 
 

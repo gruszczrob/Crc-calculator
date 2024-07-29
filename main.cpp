@@ -1,13 +1,12 @@
 #include <iostream>
+#include <Crc_8.h>
 #include <Crc_15_CAN.h>
 #include <Crc_17_CAN.h>
-#include <Crc_21_CAN.h>
 #include <Crc_16_DECT_R.h>
+#include <Crc_21_CAN.h>
 #include <Crc_32.h>
-#include <Crc_8.h>
 #include <Crc_64_ECMA.h>
 
-/*https://reveng.sourceforge.io/crc-catalogue/all.htm*/
 
 int main() {
     const std::string aaa = "0000000000000110000001010001110110000011000000010000001000000011"; 
