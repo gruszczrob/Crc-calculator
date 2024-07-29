@@ -64,6 +64,8 @@ make
 5. Import Crc_Cal_Module in python file
 
 ## How to add new Crc 
+*Many crc models are presented on this [web page](https://reveng.sourceforge.io/crc-catalogue/all.html)*
+
 **In places where anything is in those brackets ```/*[]*/``` fill it with custom info**
 1. In Crc directory add Folder named [Crc_Name]
 2. In folder create 3 files:
@@ -144,6 +146,55 @@ also in the same file at the top of the file add this:
 ```cpp
 #include </*[Crc_Name]*/.h>
 ```
+7. **Important: Atfer previous operations, you need to build project again to be able to use your crc in python. And you need to place new library file in python project instead of the old one.**
+
+## Crc build-in functions in library
+In library by default there are few crc implementation, if you don't want them you should remove everything that is in how to add new crc tutorial. This crc are:
+  - Crc 8
+  - Crc 15 CAN
+  - Crc 16 DECT R
+  - Crc 17 CAN FD
+  - Crc 21 CAN FD
+  - Crc 32
+  - Crc 64 ECMA
+
+**Functions connected to them in python are**:
+  - compute8Dec(BINARY STRING) - A function that compute CRC 8 and return decimal value in uint64_t
+  - compute8Hex(BINARY STRING) - A function that compute CRC 8 and return hexadecimal value in string
+  - compute15Dec(BINARY STRING) - A function that compute CAN CRC 15 and return decimal value in uint64_t
+  - compute15Hex(BINARY STRING) - A function that compute CAN CRC 15 and return hexadecimal value in string
+  - compute16DectRDec(BINARY STRING) - A function that compute CRC DECT R 16 and return decimal value in uint64_t
+  - compute16DectRHex(BINARY STRING) - A function that compute CRC DECT R 16 and return hexadecimal value in string
+  - compute17Dec(BINARY STRING) - A function that compute CAN CRC 17 and return decimal value in uint64_t
+  - compute17Hex(BINARY STRING) - A function that compute CAN CRC 17 and return hexadecimal value in string
+  - compute21Dec(BINARY STRING) - A function that compute CAN CRC 21 and return decimal value in uint64_t
+  - compute21Hex(BINARY STRING) - A function that compute CAN CRC 21 and return hexadecimal value in string
+  - compute32Dec(BINARY STRING) - A function that compute CRC 32 and return decimal value in uint64_t
+  - compute32Hex(BINARY STRING) - A function that compute CRC 32 and return hexadecimal value in string
+  - compute64ECMADec(BINARY STRING) - A function that compute CRC 64 ECMA and return decimal value in uint64_t
+  - compute64ECMAHex(BINARY STRING) - A function that compute CRC 64 ECMA and return hexadecimal value in string
+
+If you want to print all avaliable crc function in python use:
+```python
+import Crc_Cal_Module # type: ignore
+print(dir(Crc_Cal_Module))
+```
+## Examples of usage
+  - In this case we want to compute Crc 64 ECMA for *1000010000001101100100010000101000101111110110010100101011100111101110110101001111110100011010010110* and get result in hexadecimal number stored in string.
+  ```python
+import Crc_Cal_Module # type: ignore
+print(Crc_Cal_Module.compute64ECMAHex("1000010000001101100100010000101000101111110110010100101011100111101110110101001111110100011010010110"))
+  ```
+  Output: *CRC: 0xDC110E6C2CFA806C*
+
+  - In this case we want to commpute Crc 32 for *000010001101100011110010101110000101110000* and get result in decimal number stored in uint64_t
+  ```python
+import Crc_Cal_Module # type: ignore
+print(Crc_Cal_Module.compute32Dec("000010001101100011110010101110000101110000"))
+  ```
+  Output: *2506624157*
+
+
 
 ## Author
 
