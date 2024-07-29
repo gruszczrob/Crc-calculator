@@ -1,15 +1,13 @@
 #include "Crc_8.h"
 
-uint64_t computeCRC8(const std::string& input) {
-    return computeCRC(input, LENGTH_8, INITIAL_VALUE_8, POLYNOMIAL_8, FINAL_XOR_VALUE_8, REFIN_8, REFOUT_8);
-}
+using namespace Crc_8;
 
 uint64_t compute8Dec(const std::string& input) {
-    return computeCRC8(input);
+    return computeCRC(input, LENGTH, INITIAL_VALUE, POLYNOMIAL, FINAL_XOR_VALUE, REFIN, REFOUT);
 }
 
 std::string compute8Hex(const std::string& input) {
     std::stringstream stream;
-    stream << "CRC: 0x" << std::hex << std::uppercase << computeCRC8(input);
+    stream << "CRC: 0x" << std::hex << std::uppercase << compute8Dec(input);
     return stream.str();
 }

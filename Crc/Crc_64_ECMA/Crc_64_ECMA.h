@@ -3,16 +3,17 @@
 
 #include <Functions.h>
 
-// Parametry CRC-64-ECMA
-constexpr uint64_t POLYNOMIAL_64_ECMA = 0x42F0E1EBA9EA3693; // Wielomian CRC-21-CAN
-constexpr uint64_t INITIAL_VALUE_64_ECMA = 0x0000000000000000;  // Pocz?tkowa warto?? CRC
-constexpr uint64_t FINAL_XOR_VALUE_64_ECMA = 0x0000000000000000;
-constexpr uint8_t LENGTH_64_ECMA = 64;
-constexpr bool REFIN_64_ECMA = false;
-constexpr bool REFOUT_64_ECMA = false;
+// Parameters
+namespace Crc_64_ECMA {
+	constexpr uint64_t POLYNOMIAL = 0x42F0E1EBA9EA3693;
+	constexpr uint64_t INITIAL_VALUE = 0x0000000000000000;
+	constexpr uint64_t FINAL_XOR_VALUE = 0x0000000000000000;
+	constexpr uint8_t LENGTH = 64;
+	constexpr bool REFIN = false;
+	constexpr bool REFOUT = false;
+}
 
-// Funkcje
-uint64_t computeCRC64ECMA(const std::string& input);
+// Functions
 uint64_t compute64ECMADec(const std::string& input);
 std::string compute64ECMAHex(const std::string& input);
 #endif
