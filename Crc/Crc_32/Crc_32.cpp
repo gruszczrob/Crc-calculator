@@ -1,13 +1,11 @@
 #include "Crc_32.h"
 
-using namespace Crc_32;
-
-uint64_t compute32Dec(const std::string& input) {
+uint64_t Crc_32::computeDec(const std::string& input) {
     return computeCRC(input, LENGTH, INITIAL_VALUE, POLYNOMIAL, FINAL_XOR_VALUE, REFIN, REFOUT);
 }
 
-std::string compute32Hex(const std::string& input) {
+std::string Crc_32::computeHex(const std::string& input) {
     std::stringstream stream;
-    stream << "CRC: 0x" << std::hex << std::uppercase << compute32Dec(input);
+    stream << "CRC: 0x" << std::hex << std::uppercase << computeDec(input);
     return stream.str();
 }

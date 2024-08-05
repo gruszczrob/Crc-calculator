@@ -1,13 +1,11 @@
 #include "Crc_17_CAN.h"
 
-using namespace Crc_17_CAN;
-
-uint64_t compute17Dec(const std::string& input) {
+uint64_t Crc_17_CAN::computeDec(const std::string& input) {
     return computeCRC(input, LENGTH, INITIAL_VALUE, POLYNOMIAL, FINAL_XOR_VALUE, REFIN, REFOUT);
 }
 
-std::string compute17Hex(const std::string& input) {
+std::string Crc_17_CAN::computeHex(const std::string& input) {
     std::stringstream stream;
-    stream << "CRC: 0x" << std::hex << std::uppercase << compute17Dec(input);
+    stream << "CRC: 0x" << std::hex << std::uppercase << computeDec(input);
     return stream.str();
 }

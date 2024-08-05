@@ -3,17 +3,19 @@
 
 #include <Functions.h>
 
-// Parameters
-namespace Crc_15_CAN {
-	constexpr uint64_t POLYNOMIAL = 0xc599;
-	constexpr uint64_t INITIAL_VALUE = 0x0000;
-	constexpr uint64_t FINAL_XOR_VALUE = 0x000;
-	constexpr uint8_t LENGTH = 15;
-	constexpr bool REFIN = false;
-	constexpr bool REFOUT = false;
-}
+class Crc_15_CAN {
+	// Parameters
+	private:
+		static const uint64_t POLYNOMIAL = 0xc599;
+		static const uint64_t INITIAL_VALUE = 0x0000;
+		static const uint64_t FINAL_XOR_VALUE = 0x000;
+		static const uint8_t LENGTH = 15;
+		static const bool REFIN = false;
+		static const bool REFOUT = false;
 
-// Functions
-uint64_t compute15Dec(const std::string& input);
-std::string compute15Hex(const std::string& input);
+	// Functions
+	public:
+		static uint64_t computeDec(const std::string& input);
+		static std::string computeHex(const std::string& input);
+};
 #endif

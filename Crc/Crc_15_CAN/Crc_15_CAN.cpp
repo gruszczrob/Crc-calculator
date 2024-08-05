@@ -1,13 +1,11 @@
 ﻿#include "Crc_15_CAN.h"
 
-using namespace Crc_15_CAN;
-
-uint64_t compute15Dec(const std::string& input) {
+uint64_t Crc_15_CAN::computeDec(const std::string& input) {
     return computeCRC(input, LENGTH, INITIAL_VALUE, POLYNOMIAL, FINAL_XOR_VALUE, REFIN, REFOUT);
 }
 
-std::string compute15Hex(const std::string& input) {
+std::string Crc_15_CAN::computeHex(const std::string& input) {
     std::stringstream stream;
-    stream << "CRC: 0x" << std::hex << std::uppercase << compute15Dec(input);
+    stream << "CRC: 0x" << std::hex << std::uppercase << computeDec(input);
     return stream.str();
 }

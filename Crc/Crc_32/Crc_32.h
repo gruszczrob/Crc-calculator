@@ -3,17 +3,19 @@
 
 #include <Functions.h>
 
-// Parameters
-namespace Crc_32 {
-	constexpr uint64_t POLYNOMIAL = 0x04C11DB7;
-	constexpr uint64_t INITIAL_VALUE = 0xFFFFFFFF;
-	constexpr uint64_t FINAL_XOR_VALUE = 0xFFFFFFFF;
-	constexpr uint8_t LENGTH = 32;
-	constexpr bool REFIN = true;
-	constexpr bool REFOUT = true;
-}
+class Crc_32 {
+	// Parameters
+	private:
+		static const uint64_t POLYNOMIAL = 0x04C11DB7;
+		static const uint64_t INITIAL_VALUE = 0xFFFFFFFF;
+		static const uint64_t FINAL_XOR_VALUE = 0xFFFFFFFF;
+		static const uint8_t LENGTH = 32;
+		static const bool REFIN = true;
+		static const bool REFOUT = true;
 
-// Functions
-uint64_t compute32Dec(const std::string& input);
-std::string compute32Hex(const std::string& input);
+	// Functions
+	public:
+		static uint64_t computeDec(const std::string& input);
+		static std::string computeHex(const std::string& input);
+};
 #endif

@@ -3,17 +3,19 @@
 
 #include <Functions.h>
 
-// Parameters
-namespace Crc_16_DECT_R {
-	constexpr uint64_t POLYNOMIAL = 0x0589;
-	constexpr uint64_t INITIAL_VALUE = 0x0000;
-	constexpr uint64_t FINAL_XOR_VALUE = 0x0001;
-	constexpr uint8_t LENGTH = 16;
-	constexpr bool REFIN = false;
-	constexpr bool REFOUT = false;
-}
+class Crc_16_DECT_R {
+	// Parameters
+	private:
+		static const uint64_t POLYNOMIAL = 0x0589;
+		static const uint64_t INITIAL_VALUE = 0x0000;
+		static const uint64_t FINAL_XOR_VALUE = 0x0001;
+		static const uint8_t LENGTH = 16;
+		static const bool REFIN = false;
+		static const bool REFOUT = false;
 
-// Functions
-uint64_t computeCRC16DectRDec(const std::string& input);
-std::string computeCRC16DectRHex(const std::string& input);
+	// Functions
+	public:
+		static uint64_t computeDec(const std::string& input);
+		static std::string computeHex(const std::string& input);
+};
 #endif

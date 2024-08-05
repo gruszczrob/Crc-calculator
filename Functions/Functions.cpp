@@ -1,6 +1,6 @@
 #include "Functions.h"
 
-//OBRACANIE BITÓW LICZBY
+//REVERSE BITS
 uint64_t reverseBits(uint64_t num, int n) {
     uint64_t result = 0;
     for (int i = 0; i < n; ++i) {
@@ -9,7 +9,7 @@ uint64_t reverseBits(uint64_t num, int n) {
     return result;
 }
 
-//LICZENIE CRC
+//CRC COMPUTE
 uint64_t computeCRC(const std::string& input, const uint8_t length, const uint64_t initialValue, const uint64_t polynomial, const uint64_t finalXorValue, const bool refin, const bool refout) {
     std::vector<uint8_t> data = bitStringToByteArray(input);
 
@@ -37,14 +37,13 @@ uint64_t computeCRC(const std::string& input, const uint8_t length, const uint64
     if (refout) {
         crc = reverseBits(crc, length);
     }
-    return (crc ^ finalXorValue) & limiter; // XOR na ko?cu
+    return (crc ^ finalXorValue) & limiter;
 }
 
-// STRING BITÓW DO VECTORA BYTEÓW
+// BIT STRING TO VECTOR OF BYTE
 std::vector<uint8_t> bitStringToByteArray(const std::string& bitString) {
     std::vector<uint8_t> byteArray;
     std::string paddedBitString = bitString;
-    // Dodaj zera na pocz?tku, aby d?ugo?? by?a wielokrotno?ci? 8
     if (paddedBitString.size() % 8 != 0) {
         for (int i = (8 - (paddedBitString.size() % 8)); i > 0; i--) {
             paddedBitString = "0" + paddedBitString;
@@ -53,7 +52,7 @@ std::vector<uint8_t> bitStringToByteArray(const std::string& bitString) {
 
     for (size_t i = 0; i < paddedBitString.size(); i += 8) {
         std::string byteString = paddedBitString.substr(i, 8);
-        uint8_t byteValue = static_cast<uint8_t>(std::stoi(byteString, nullptr, 2)); // Przekszta?? ci?g bitów na liczb? ca?kowit? typu uint8_t
+        uint8_t byteValue = static_cast<uint8_t>(std::stoi(byteString, nullptr, 2));
         byteArray.push_back(byteValue);
     }
     return byteArray;
