@@ -75,40 +75,41 @@ make
 3. Fill those files with templates:
   - [Crc_Name].cpp
 ```c++
-#include "/*[Crc_Name]*/"
+#include "/*[Crc_Name]*/.h"
 
-using namespace /*[Crc_Name]*/;
-
-uint64_t compute/*[Crc_Name]*/Dec(const std::string& input) {
+uint64_t /*[Crc_Name]*/::computeDec(const std::string& input) {
     return computeCRC(input, LENGTH, INITIAL_VALUE, POLYNOMIAL, FINAL_XOR_VALUE, REFIN, REFOUT);
 }
 
-std::string compute/*[Crc_Name]*/Hex(const std::string& input) {
+std::string /*[Crc_Name]*/::computeHex(const std::string& input) {
     std::stringstream stream;
-    stream << "CRC: 0x" << std::hex << std::uppercase << compute/*[Crc_Name]*/Dec(input);
+    stream << "CRC: 0x" << std::hex << std::uppercase << computeDec(input);
     return stream.str();
 }
 
 ```
   - [Crc_Name].h
 ```c++
-﻿#ifndef CRC_/*[Crc_Name with capital letters]*/_H
-#define CRC_/*[Crc_Name with capital letters]*/_H
+﻿#ifndef /*[Crc_Name with capital letters]*/_H
+#define /*[Crc_Name with capital letters]*/_H
 
 #include <Functions.h>
 
-// Parameters
-namespace /*[Crc_Name]*/ {
-	constexpr uint64_t POLYNOMIAL = /*[Crc_POLYNOMINAL]*/;
-	constexpr uint64_t INITIAL_VALUE = /*[CRC_INITIAL_VALUE]*/;
-	constexpr uint64_t FINAL_XOR_VALUE = /*[CRC_FINAL_XOR_VALUE]*/;
-	constexpr uint8_t LENGTH = /*[CRC_LENGTH]*/;
-	constexpr bool REFIN = /*[DOES_CRC_HAS_REFIN]*/;
-	constexpr bool REFOUT = /*[DOES_CRC_HAS_REFOUT]*/;
-}
+class /*[Crc_Name]*/ {
+	// Parameters
+	private:
+		static const uint64_t POLYNOMIAL = 0xc599;
+		static const uint64_t INITIAL_VALUE = 0x0000;
+		static const uint64_t FINAL_XOR_VALUE = 0x000;
+		static const uint8_t LENGTH = 15;
+		static const bool REFIN = false;
+		static const bool REFOUT = false;
 
-uint64_t compute/*[Crc_Name]*/Dec(const std::string& input);
-std::string compute/*[Crc_Name]*/Hex(const std::string& input);
+	// Functions
+	public:
+		static uint64_t computeDec(const std::string& input);
+		static std::string computeHex(const std::string& input);
+};
 #endif
 ```
   - CMakeLists.txt
@@ -134,8 +135,8 @@ target_link_libraries(Crc_Cal_Module PRIVATE /*[Crc_Name]*/)
 
 5. In main folder add to module.cpp new lines inside this function: ```PYBIND11_MODULE(Crc_Cal_Module, m) {}```
 ```c++
-    m.def("compute/*[Crc_Name]*/Dec", &compute/*[Crc_Name]*/Dec, "A function that compute CRC /*[Crc_Name]*/ and return uint64_t");
-    m.def("compute/*[Crc_Name]*/Hex", &compute/*[Crc_Name]*/Hex, "A function that compute CRC /*[Crc_Name]*/ and return string");
+    m.def("[/*Function name for your crc for dec*/]", &/*[Crc_Name]*/::computeDec, "A function that compute /*[Crc_Name]*/ and return uint64_t");
+    m.def("[/*Function name for your crc for hex*/]", &/*[Crc_Name]*/::computeHex, "A function that compute /*[Crc_Name]*/ and return string");
 ```
 also in the same file at the top of the file add this:
 ```cpp
